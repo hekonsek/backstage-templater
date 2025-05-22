@@ -20,7 +20,10 @@ class Templater:
             f.write(self.template_definition)
 
         content_dir = template_project_path / "content"
-        shutil.copytree(current_directory, content_dir, dirs_exist_ok=True)
+        def ignore_patterns(dir, files):
+            ignore = {'.git', '__pycache__'}
+            return [f for f in files if f in ignore]
+        shutil.copytree(current_directory, content_dir, dirs_exist_ok=True, ignore=ignore_patterns)
 
         with open(content_dir / 'catalog-info.yml', 'w') as f:
             f.write(self.catalog_info)
