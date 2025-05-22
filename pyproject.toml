@@ -1,0 +1,25 @@
+[project]
+name = "backstage-templater"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Henryk Konsek",email = "hekonsek@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+include = [
+    "backstage_templater/template_definition.yml",
+    "backstage_templater/catalog-info.yml"
+    ]
+
+[tool.poetry.scripts]
+backstage-templater = "backstage_templater.cli:main"
